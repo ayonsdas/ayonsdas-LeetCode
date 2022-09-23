@@ -1,29 +1,24 @@
 class Solution:
     def displayTable(self, orders: List[List[str]]) -> List[List[str]]:
-        
-        category={}
-        foods=['Table']
+        foods = set()
         for order in orders:
-            if order[1] not in category.keys():
-                category[order[1]]={}
-            if order[2] not in category[order[1]].keys():
-                category[order[1]][order[2]]=1
-            else:
-                category[order[1]][order[2]]+=1
-            if order[2] not in foods:
-                foods.append(order[2])
-
-        tables = category.keys()
-        foods = [foods[0]]+sorted(foods[1:])
-        ans=[foods]
-        
-        for k in sorted(category.keys(),key=int):
-            table=[]
-            table.append(str(k))
-            for i in range(1,len(foods)):
-                if foods[i] in category[k].keys():
-                    table.append(str(category[k][foods[i]]))
-                else:
-                    table.append('0')
-            ans+=[table]
-        return ans   
+            foods.add(order[2])
+        keys = {}
+        for order in orders:
+            order[1] = int(order[1])
+            if not order[1] in keys:
+                keys[order[1]] = {}
+                for food in foods:
+                    keys[order[1]][food] = 0
+            keys[order[1]][order[2]] += 1
+        t = []
+        l = ["Table"]
+        for x in sorted(foods):
+            l.append(x)
+        t.append(l)
+        for x in sorted(keys.keys()):
+            z = [str(x)]
+            for tx in sorted(keys[x].keys()):
+                z.append(str(keys[x][tx]))
+            t.append(z)
+        return t
