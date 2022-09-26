@@ -58,6 +58,4 @@ class Solution:
                         if t != eq[3]:
                             badKey[eq[3]].add(t)
                             badKey[t].add(eq[3])
-            print(goodKey)
-            print(badKey)
         return True
