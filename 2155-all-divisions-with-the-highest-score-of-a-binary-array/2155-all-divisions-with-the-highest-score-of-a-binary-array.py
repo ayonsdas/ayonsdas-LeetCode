@@ -3,8 +3,8 @@ class Solution:
         m = sum(nums)
         c = m
         l = [0]
-        for i in range(len(nums)):
-            if nums[i]:
+        for i, num in enumerate(nums, ):
+            if num:
                 c -= 1
             else:
                 c += 1
