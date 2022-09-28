@@ -7,9 +7,10 @@ class Solution:
                 c -= 1
             else:
                 c += 1
-            if c >= m:
-                if c > m:
-                    l = []
+            if c > m:
+                l = []
                 l.append(i + 1)
                 m = c
+            elif c == m:
+                l.append(i + 1)
         return l
