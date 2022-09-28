@@ -1,9 +1,8 @@
 class Solution:
     def maxScoreIndices(self, nums: List[int]) -> List[int]:
-        m = sum(nums)
-        c = m
+        m = c = sum(nums)
         l = [0]
-        for i, num in enumerate(nums, ):
+        for i, num in enumerate(nums):
             if num:
                 c -= 1
             else:
