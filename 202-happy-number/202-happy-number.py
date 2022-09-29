@@ -1,14 +1,14 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
         
-        s = set()
+        s = f = n
         while True:
-            if n == 1:
-                return True
-            if n in s:
-                return False
-            s.add(n)
-            n = self.modify(n)
+            s = self.modify(s)
+            f = self.modify(self.modify(f))
+            if s == f:
+                break
+        
+        return s == 1
             
     def modify(self, n: int) -> int:
         t = 0
