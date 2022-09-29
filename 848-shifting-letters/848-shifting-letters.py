@@ -1,6 +1,5 @@
 class Solution:
     def shiftingLetters(self, s: str, shifts: List[int]) -> str:
-        chars = [chr(i + 97) for i in range(26)]
         s = [ord(c) for c in s]
         l = [0]
         for shift in shifts[::-1]:
