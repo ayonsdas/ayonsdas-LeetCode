@@ -1,7 +1,5 @@
 class Solution:
     def uniquePathsWithObstacles(self, o: List[List[int]]) -> int:
-        if len(o) == 1 and len(o[0]) == 1:
-            return 1 - o[0][0]
         dp = [[0 for x in o[0]] for y in o]
         dp[0][0] = 1 - o[0][0]
         for i in range(len(o)):
