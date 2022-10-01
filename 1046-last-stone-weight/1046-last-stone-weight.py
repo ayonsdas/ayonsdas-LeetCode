@@ -9,6 +9,7 @@ class Solution:
         while len(x) > 1:
             a = -heappop(x)
             b = -heappop(x)
-            heappush(x, b - a)
+            if a != b:
+                heappush(x, b - a)
             
-        return -heappop(x)
+        return -heappop(x) if x else 0
