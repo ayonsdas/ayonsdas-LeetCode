@@ -9,4 +9,4 @@ class Solution:
                 prod //= nums[l]
                 l += 1
             c += r - l + 1
-        return c
+        return c 
