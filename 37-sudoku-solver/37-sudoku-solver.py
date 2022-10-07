@@ -4,59 +4,47 @@ class Solution:
         Do not return anything, modify board in-place instead.
         """
         
-        def valRow(x: int) -> bool:
-            nonlocal board
-            aSet = set()
+        rows = [set() for _ in range(9)]
+        columns = [set() for _ in range(9)]
+        boxs = [set() for _ in range(9)]
+
+        for i in range(9):
             for j in range(9):
-                if board[x][j] != ".":
-                    if board[x][j] in aSet:
-                        return False
-                    aSet.add(board[x][j])
-            return True
-        
-        def valCol(y: int) -> bool:
-            nonlocal board
-            aSet = set()
-            for i in range(9):
-                if board[i][y] != ".":
-                    if board[i][y] in aSet:
-                        return False
-                    aSet.add(board[i][y])
-            return True
-        
-        def valSquare(x: int, y: int) -> bool:
-            nonlocal board
-            aSet = set()
-            x //= 3
-            y //= 3
-            x *= 3
-            y *= 3
-            for i in range(3):
-                for j in range(3):
-                    if board[x + i][y + j] != ".":
-                        if board[x + i][y + j] in aSet:
-                            return False
-                        aSet.add(board[x + i][y + j])
-            return True
-        
-        def validCheck(x: int, y: int) -> bool:
-            return valRow(x) and valCol(y) and valSquare(x, y)
-        
-        def checkTrue(p: int) -> bool:
-            nonlocal board
-            if p == 81:
+                if board[i][j] != '.':
+                    key = board[i][j]
+                    rows[i].add(key)
+                    columns[j].add(key)
+                    boxs[(i//3)*3 + (j//3)].add(key)
+
+        def recursion(i,j):
+            if j > 8:
+                j = 0
+                i += 1
+            if i > 8 and i > 8:
                 return True
-            x, y = p // 9, p % 9
-            if board[x][y] != ".":
-                return checkTrue(p + 1)
-            for i in range(1, 10):
-                board[x][y] = str(i)
-                if validCheck(x, y):
-                    if checkTrue(p + 1):
+
+            if board[i][j] != '.':
+                return recursion(i,j+1)
+            else:
+                poss_choice = []
+
+                for choice in range(1,10):
+                    choice = str(choice)
+                    if choice not in rows[i] and choice not in columns[j] and choice not in boxs[(i//3)*3 + (j//3)]:
+                        poss_choice.append(choice)
+
+                for poss in poss_choice:
+                    rows[i].add(poss)
+                    columns[j].add(poss)
+                    boxs[(i // 3) * 3 + (j // 3)].add(poss)
+                    board[i][j] = poss
+                    correct = recursion(i,j+1)
+                    if correct:
                         return True
-            board[x][y] = "."
-            return False
-                
-        
-            
-        checkTrue(0)
+                    else:
+                        rows[i].remove(poss)
+                        columns[j].remove(poss)
+                        boxs[(i // 3) * 3 + (j // 3)].remove(poss)
+                        board[i][j] = '.'
+
+        recursion(0,0)
