@@ -7,10 +7,9 @@ class Solution:
                 return
             if a > n:
                 return
-            b, c = [x for x in t], [x for x in t]
-            c.append(a)
-            f(b, a + 1)
-            f(c, a + 1)
+            f([x for x in t], a + 1)
+            t.append(a)
+            f([x for x in t], a + 1)
         f([], 1)
             
         return s
