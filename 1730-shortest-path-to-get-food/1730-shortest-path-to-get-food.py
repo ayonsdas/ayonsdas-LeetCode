@@ -15,15 +15,14 @@ class Solution:
                 i += 1
                 continue
             break
-        v = set()
         d = [(-1, 0), (0, -1), (1, 0), (0, 1)]
         q = [(x, y, 0)]
         while q:
             x, y, l = q.pop(0)
-            if x >= 0 and x < lg and y >= 0 and y < lg2 and not(x, y) in v and g[x][y] != "X":
+            if x >= 0 and x < lg and y >= 0 and y < lg2 and g[x][y] != "X":
                 if g[x][y] == "#":
                     return l
                 for dx, dy in d:
                     q.append((x + dx, y + dy, l + 1))
-                v.add((x, y))
+                g[x][y] = "X"
         return -1
