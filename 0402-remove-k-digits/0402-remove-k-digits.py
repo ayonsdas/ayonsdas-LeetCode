@@ -3,9 +3,8 @@ class Solution:
         s = []
         for n in num:
             while s and k and s[-1] > n:
-                s.pop()
+                s.pop(-1)
                 k -= 1
-            
             if s or n != '0':
                 s.append(n)
             
