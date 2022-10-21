@@ -1,18 +1,26 @@
 class Solution:
     def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
         
-        v = set()
-        q = []
-        d = [(-1, 0), (0, -1), (1, 0), (0, 1)]
-        for i in range(len(mat)):
-            for j in range(len(mat[0])):
-                if mat[i][j] == 0:
-                    q.append((i, j, 0))
-        while q:
-            m = q.pop(0)
-            if not (m[0], m[1]) in v and m[0] >= 0 and m[0] < len(mat) and m[1] >= 0 and m[1] < len(mat[0]):
-                mat[m[0]][m[1]] = m[2]
-                for x, y in d:
-                    q.append((m[0] + x, m[1] + y, m[2] + 1))
-                v.add((m[0], m[1]))
+        x = 0
+        mx = len(mat)
+        my = len(mat[0])
+        while x < mx:
+            y = 0
+            while y < my:
+                if mat[x][y]:
+                    u = mat[x - 1][y] + 1 if x > 0 else float('inf')
+                    l = mat[x][y - 1] + 1 if y > 0 else float('inf')
+                    mat[x][y] = min(u, l)
+                y += 1
+            x += 1
+        x = mx - 1
+        while x >= 0:
+            y = my - 1
+            while y >= 0:
+                if mat[x][y]:
+                    d = mat[x + 1][y] + 1 if x < mx - 1 else float('inf')
+                    r = mat[x][y + 1] + 1 if y < my - 1 else float('inf')
+                    mat[x][y] = min(mat[x][y], d, r)
+                y -= 1
+            x -= 1
         return mat
