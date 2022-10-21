@@ -2,8 +2,8 @@ class TicTacToe:
 
     def __init__(self, n: int):
         self.n = n
-        self.rows = defaultdict(int)
-        self.cols = defaultdict(int)
+        self.rows = [0 for _ in range(n)]
+        self.cols = [0 for _ in range(n)]
         self.diag1 = 0
         self.diag2 = 0
 
