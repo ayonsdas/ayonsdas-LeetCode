@@ -8,11 +8,8 @@ class Solution:
             x1 = -1
             while l <= r:
                 m = (l + r) // 2
-                if heaters[m] == h or heaters[m] < h and (m == len(heaters) - 1 or heaters[m + 1] > h):
+                if heaters[m] == h or heaters[m] < h and (m == len(heaters) - 1 or heaters[m + 1] >= h):
                     x1 = m
-                    break
-                elif m < len(heaters) - 1 and heaters[m + 1] == h:
-                    x1 = m + 1
                     break
                 elif heaters[m] < h:
                     l = m + 1
