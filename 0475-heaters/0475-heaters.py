@@ -1,35 +1,24 @@
 class Solution:
     def findRadius(self, houses: List[int], heaters: List[int]) -> int:
-        heaters.sort()
-        
-        memo_heater = set(heaters)
-        
-        res = 0
-        
-        for house in houses:
-            if house not in memo_heater:
-                index = bisect.bisect(heaters, house)
-                
-                # three kind of senario:
-                # 1. target: 0 arrary:[2, 5]
-                #   -> get: 0
-                # 2. target: 3 arrary:[2, 5]
-                #   -> get: 1
-                # 3. target: 7 arrary:[2, 5]
-                #   -> get: 2
-                # 4. target: 2 arrary:[2, 5]
-                #   -> get: 0
-                # 5. target: 5 arrary:[2, 5]
-                #   -> get: 2
-                
-                if index == 0:
-                    res = max(res, heaters[index] - house)
-                elif index >= len(heaters):
-                    res = max(res, house - heaters[len(heaters) - 1])
+        heaters = sorted(heaters)
+        md = 0
+        for h in houses:
+            l = 0
+            r = len(heaters) - 1
+            x1 = -1
+            while l <= r:
+                m = (l + r) // 2
+                if heaters[m] == h or heaters[m] < h and (m == len(heaters) - 1 or heaters[m + 1] >= h):
+                    x1 = m
+                    break
+                elif heaters[m] < h:
+                    l = m + 1
                 else:
-                    left = house - heaters[index - 1]
-                    right = heaters[index] - house
-                    short = min(left, right)
-                    res = max(res, short)
-                    
-        return res
+                    r = m - 1
+            if heaters[x1] == h or m < len(heaters) - 1 and heaters[m + 1] == h:
+                continue
+            x2 = (x1 + 1)
+            a = (h - heaters[x1]) if x1 != -1 else float('inf')
+            b = (heaters[x2] - h) if x2 != len(heaters) else float('inf')
+            md = max(md, min(a, b))
+        return md
