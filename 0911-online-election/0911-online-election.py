@@ -3,20 +3,17 @@ class TopVotedCandidate:
     def __init__(self, persons: List[int], times: List[int]):
         self.times = times
         a = max(persons)
-        x = {}
-        self.l = [-1 for _ in range(len(times))] 
+        x = [0 for _ in range(a + 1)]
+        self.l = []
         leader = -1
         mScore = 0
-        i = 0
         for p in persons:
-            if not p in x:
-                x[p] = 0
             x[p] += 1
             if x[p] >= mScore:
                 mScore = x[p]
                 leader = p
-            self.l[i] = leader
-            i += 1
+            self.l.append(leader)
+        print(self.l)
 
     def q(self, t: int) -> int:
         return self.l[bisect.bisect_right(self.times, t) - 1]
