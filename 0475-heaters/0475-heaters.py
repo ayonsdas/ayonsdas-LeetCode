@@ -15,7 +15,7 @@ class Solution:
                     l = m + 1
                 else:
                     r = m - 1
-            if heaters[x1] == h:
+            if heaters[x1] == h or m < len(heaters) - 1 and heaters[m + 1] == h:
                 continue
             x2 = (x1 + 1)
             a = (h - heaters[x1]) if x1 != -1 else float('inf')
