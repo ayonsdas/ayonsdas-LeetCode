@@ -17,7 +17,7 @@ class Solution:
             a = set(s)
             b = set(x[p])
             c = dp(s, p + 1)
-            if len(list(a & b)) == 0:
+            if len(a & b) == 0:
                 d = dp(s + x[p], p + 1)
                 if len(d) > len(c):
                     c = d
