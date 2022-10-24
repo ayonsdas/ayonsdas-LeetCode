@@ -10,7 +10,6 @@ class Solution:
                 l.add(char)
             else:
                 x.append(word)
-        @lru_cache(None)
         def dp(s: str, p: int) -> str:
             nonlocal x
             if p == len(x):
