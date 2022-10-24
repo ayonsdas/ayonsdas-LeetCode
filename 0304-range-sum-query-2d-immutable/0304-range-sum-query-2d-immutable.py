@@ -11,6 +11,6 @@ class NumMatrix:
         return self.x[r2][c2] - (self.x[r1 - 1][c2] if r1 > 0 else 0) - (self.x[r2][c1 - 1] if c1 > 0 else 0) + (self.x[r1 - 1][c1 - 1] if (r1 > 0 and c1 > 0) else 0)
 
 
-# Your NumMatrix object will be instantiated and called as such:
+# Your NumMatrix object will be instantiated and called as such
 # obj = NumMatrix(matrix)
 # param_1 = obj.sumRegion(row1,col1,row2,col2)
