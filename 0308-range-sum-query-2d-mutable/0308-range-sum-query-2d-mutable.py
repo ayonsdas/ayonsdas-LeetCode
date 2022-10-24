@@ -36,7 +36,7 @@ class NumMatrix:
         return s
 
 
-# Your NumMatrix object will be instantiated and called as such
+# Your NumMatrix object will be instantiated and called as such:
 # obj = NumMatrix(matrix)
 # obj.update(row,col,val)
 # param_2 = obj.sumRegion(row1,col1,row2,col2)
