@@ -7,7 +7,7 @@ class NumArray:
         print(self.x)
 
     def sumRange(self, left: int, right: int) -> int:
-        return self.x[right + 1] -  self.x[left]
+        return self.x[right + 1] - self.x[left]
 
 
 # Your NumArray object will be instantiated and called as such:
