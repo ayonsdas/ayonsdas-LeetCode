@@ -23,4 +23,4 @@ class Solution:
                     c = d
             return c
             
-        return len(dp("", 0))
+        return len(dp("", 0)) 
