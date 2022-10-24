@@ -8,7 +8,13 @@ class NumMatrix:
         print(self.x)
 
     def sumRegion(self, r1: int, c1: int, r2: int, c2: int) -> int:
-        return self.x[r2][c2] - (self.x[r1 - 1][c2] if r1 > 0 else 0) - (self.x[r2][c1 - 1] if c1 > 0 else 0) + (self.x[r1 - 1][c1 - 1] if (r1 > 0 and c1 > 0) else 0)
+        if r1 == 0 and c1 == 0:
+            return self.x[r2][c2]
+        if r1 == 0:
+            return self.x[r2][c2] - self.x[r2][c1 - 1]
+        if c1 == 0:
+            return self.x[r2][c2] - self.x[r1 - 1][c2]
+        return self.x[r2][c2] - self.x[r1 - 1][c2] - self.x[r2][c1 - 1] + self.x[r1 - 1][c1 - 1]
 
 
 # Your NumMatrix object will be instantiated and called as such
