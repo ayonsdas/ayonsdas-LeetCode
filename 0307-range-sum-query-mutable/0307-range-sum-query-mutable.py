@@ -23,7 +23,7 @@ class NumArray:
         i += 1
         s = 0
         while i > 0:
-            s += self.bit[i]
+            s += self.bit[i] 
             i -= i & -i
         return s
 
