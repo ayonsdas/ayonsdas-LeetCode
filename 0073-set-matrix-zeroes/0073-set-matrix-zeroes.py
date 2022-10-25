@@ -38,4 +38,4 @@ class Solution:
                 mx[0][j] = 0
         if c:
             for i in range(m):
-                mx[i][0] = 0 
+                mx[i][0] = 0
