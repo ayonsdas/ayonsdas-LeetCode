@@ -8,4 +8,4 @@ class Solution:
         x = 0
         for i in range(len(height)):
             x += max(0, min(heightL[i], heightR[i]) - height[i])
-        return x 
+        return x
