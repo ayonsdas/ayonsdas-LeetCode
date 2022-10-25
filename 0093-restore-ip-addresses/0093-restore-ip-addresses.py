@@ -27,4 +27,4 @@ class Solution:
         if len(s) >= 3 and int(s[:3]) <= 255:
             curr.append(s[:3])
             self.finder(curr, s[3:], sol)
-            curr.pop(-1)
+            curr.pop(-1) 
