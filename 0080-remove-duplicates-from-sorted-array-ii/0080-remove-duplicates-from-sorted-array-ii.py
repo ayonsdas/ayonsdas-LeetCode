@@ -11,4 +11,4 @@ class Solution:
             if c < 3:
                 nums[i] = nums[j]
                 i += 1
-        return i
+        return i 
