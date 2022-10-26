@@ -17,4 +17,4 @@ def remove_duplicates(nums)
         end
     end
     return i
-end 
+end
