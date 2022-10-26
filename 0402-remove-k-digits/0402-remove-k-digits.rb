@@ -23,4 +23,4 @@ def remove_kdigits(num, k)
         return "0"
     end
     return s
-end 
+end
