@@ -1,5 +1,3 @@
-
-
 void setZeroes(int** mx, int matrixSize, int* matrixColSize)
 {
     bool r = false;
