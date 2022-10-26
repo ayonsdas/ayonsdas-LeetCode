@@ -5,17 +5,16 @@ def remove_duplicates(nums)
     curr = 10001
     i = 0
     j = 0
-    while j < nums.length()
+    for j in 0..nums.length() - 1
         if nums[j] != curr
             curr = nums[j]
             c = 0
         end
-        c = c + 1
+        c += 1
         if c < 3
             nums[i] = nums[j]
-            i = i + 1
+            i += 1
         end
-        j = j + 1
     end
     return i
 end
