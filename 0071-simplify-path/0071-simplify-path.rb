@@ -15,4 +15,4 @@ def simplify_path(path)
         end
     end
     return "/" + s.join("/")
-end
+end 
