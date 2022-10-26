@@ -18,4 +18,4 @@ def remove_duplicates(nums)
         j = j + 1
     end
     return i
-end
+end 
