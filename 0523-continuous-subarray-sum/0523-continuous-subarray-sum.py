@@ -11,5 +11,4 @@ class Solution:
                 return True
             if not a[i] in l:
                 l[a[i]] = i
-        print(a)
         return False
