@@ -25,4 +25,4 @@ def first_bad_version(n)
         end
     end
     return l
-end 
+end
