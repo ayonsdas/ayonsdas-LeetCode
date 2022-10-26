@@ -9,4 +9,4 @@ var removeElement = function(nums, val) {
         if(nums[j] != val)
             nums[i++] = nums[j];
     return i;
-}; 
+};
