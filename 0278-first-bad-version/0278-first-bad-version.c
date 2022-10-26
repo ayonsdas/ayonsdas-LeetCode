@@ -16,4 +16,4 @@ int firstBadVersion(int n) {
         }
     }
     return l;
-} 
+}
