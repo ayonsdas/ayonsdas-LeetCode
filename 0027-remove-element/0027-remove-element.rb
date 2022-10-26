@@ -11,4 +11,4 @@ def remove_element(nums, val)
         end
     end
     return i
-end 
+end
