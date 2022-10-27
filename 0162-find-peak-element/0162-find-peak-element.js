@@ -15,4 +15,4 @@ var search = function(nums, l, r)
     if(nums[mid] > nums[mid + 1])
         return search(nums, l, mid);
     return search(nums, mid + 1, r);
-}; 
+};
