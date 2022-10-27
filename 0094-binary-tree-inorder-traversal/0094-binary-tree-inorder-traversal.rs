@@ -35,18 +35,3 @@ impl Solution {
         return returnable;
     }
 }
-
-/*
-class Solution:
-    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        if root == None:
-            return []
-        returnable = []
-        if root.left != None:
-            for val in self.inorderTraversal(root.left):
-                returnable.append(val)
-        returnable.append(root.val)
-        if root.right != None:
-            for val in self.inorderTraversal(root.right):
-                returnable.append(val)
-        return returnable */
