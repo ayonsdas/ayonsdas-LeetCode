@@ -21,4 +21,4 @@ class Solution
                 n2 ^= num;
         return new int[] {n1, n2};
     }
-}
+} 
