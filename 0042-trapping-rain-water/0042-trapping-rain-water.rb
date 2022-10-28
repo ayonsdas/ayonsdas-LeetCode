@@ -12,4 +12,4 @@ def trap(height)
         x += [0, [heightL[i], heightR[i]].min() - height[i]].max()
     end
     return x
-end
+end 
