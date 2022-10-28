@@ -9,4 +9,4 @@ class Solution:
         l = []
         for key in keys:
             l.append(keys[key])
-        return l 
+        return l
