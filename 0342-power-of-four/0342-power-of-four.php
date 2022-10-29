@@ -5,10 +5,6 @@ class Solution {
      * @return Boolean
      */
     function isPowerOfFour($n) {
-        if($n > 0)
-        {
-            return (fmod(log($n, 4.0), 1.0) == 0.0);
-        }
-        return false;
+        if($n > 0) return (fmod(log($n, 4.0), 1.0) == 0.0); else return false;
     }
 }
