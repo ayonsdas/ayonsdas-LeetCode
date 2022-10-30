@@ -1,74 +1,90 @@
 class Solution {
     
-    private Set<Cell> visited = new HashSet<>();
-    private int m, n;
-    private int[][] dirs = new int[][] { {0,1}, {1,0}, {0,-1}, {-1,0} };
+    Set<Zip> cache = new HashSet<>();
+    int m, n;
+    int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
     
-    public int shortestPath(int[][] g, int k) {
-        this.m = g.length; this.n = g[0].length;
+    public int shortestPath(int[][] grid, int k) {
         
-        if (k >= m + n - 2) return m + n - 2;
+        m = grid.length; n = grid[0].length;
         
-        var q = new ArrayDeque<Cell>();
-        int steps = 0;
+        if(k >= m + n - 2)
+        {
+            return m + n - 2;
+        }
         
-        q.add(new Cell(0,0, g[0][0]));
+        var dq = new ArrayDeque<Zip>(); 
         
-        while (!q.isEmpty()) {
-            int size = q.size();
+        dq.add(new Zip(0, 0, grid[0][0]));
+        int s = 0;
+        
+        while(!dq.isEmpty())
+        {
+            int c = dq.size();
             
-            for (int i = 0; i < size; i++) {
-                var c = q.poll();
-                if (c.x == m-1 && c.y == n-1) return steps;
-                
-                if (g[c.x][c.y] == 1) {
-                    c.obs++;
-                    if (c.obs > k) continue;
+            for(int i = 0; i < c; i++)
+            {
+                Zip a = dq.poll();
+
+                if(a.x == m - 1 && a.y == n - 1)
+                {
+                    return s;
                 }
                 
-                for (var dir : dirs) {
-                    int x1 = c.x + dir[0], y1 = c.y + dir[1]; 
-                    
-                    if (isOutOfBounds(x1,y1)) continue;
-                    
-                    Cell neighbor = new Cell(x1, y1, c.obs);
-                    if (!visited.contains(neighbor)) {
-                        q.offer(neighbor);
-                        visited.add(neighbor);
+                if(grid[a.x][a.y] == 1)
+                {
+                    a.k++;
+                    if(a.k > k)
+                        continue;
+                }
+
+                for(int[] dir : dirs)
+                {
+                    int x = a.x + dir[0], y = a.y + dir[1];
+
+                    if(x < 0 || y < 0 || x >= m || y >= n)
+                        continue;
+
+                    Zip b = new Zip(x, y, a.k);
+
+                    if(!cache.contains(b))
+                    {
+                        cache.add(b);
+                        dq.offer(b);
                     }
                 }
             }
-            steps++;
+            s++;
         }
+        
         return -1;
     }
     
-    private boolean isOutOfBounds(int x, int y) {
-        return x < 0 || x == m || y < 0 || y == n;
-    }
+    private class Zip {
     
-    private static class Cell {
-        int x, y, obs;
-        
-        private Cell(int x, int y, int obs) {
-            this.x = x; this.y = y; this.obs = obs;
+        int x;
+        int y;
+        int k;
+
+        private Zip(int x, int y, int k)
+        {
+            this.x = x;
+            this.y = y;
+            this.k = k;
         }
 
         @Override
-        public String toString() {
-            return "(" + x + "," + y + "," + obs + ")";
-        }
-        
-        @Override
-        public boolean equals(Object o) {
-            if (o == null || !(o instanceof Cell)) return false;
-            Cell c = (Cell) o;
-            return this.x == c.x && this.y == c.y && this.obs == this.obs;
+        public boolean equals(Object o)
+        {   
+            Zip zO = (Zip) o;
+
+            return this.x == zO.x && this.y == zO.y && this.k == zO.k;
         }
         
         @Override
         public int hashCode() {
-            return Objects.hash(this.x, this.y, this.obs);
+            return Objects.hash(this.x, this.y, this.k);
         }
+
     }
 }
