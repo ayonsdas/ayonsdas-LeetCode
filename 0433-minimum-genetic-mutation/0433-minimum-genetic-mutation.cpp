@@ -10,10 +10,8 @@ public:
         map<string, unordered_set<string>> m;
         queue<string> q;
         int s = 0;
-        m[start] = unordered_set<string>();
         for(string a : bank)
         {
-            m[a] = unordered_set<string>();
             if(oneOff(a, start))
             {
                 m[start].insert(a);
