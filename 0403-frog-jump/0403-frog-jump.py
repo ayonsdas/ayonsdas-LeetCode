@@ -20,4 +20,4 @@ class Solution:
             return (dp(p + pre - 1, pre - 1) if pre > 1 else False) or dp(p + pre, pre) or dp(p + pre + 1, pre + 1)
             
         
-        return dp(s + 1, 1) 
+        return dp(s + 1, 1)
