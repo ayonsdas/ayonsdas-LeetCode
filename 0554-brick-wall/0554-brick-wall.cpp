@@ -2,18 +2,20 @@ class Solution {
 public:
     int leastBricks(vector<vector<int>>& wall) {
         unordered_map<int, int> m;
-        for(int i = 0; i < wall.size(); i++)
+        int R = wall.size();
+        for(int i = 0; i < R; i++)
         {
             int k = 0;
-            for(int j = 0; j < wall[i].size() - 1; j++)
+            int C = wall[i].size() - 1;
+            for(int j = 0; j < C; j++)
             {
                 k += wall[i][j];
-                m[k] += 1;
+                m[k]++;
             }
         }
         
         int macs = 0;
-        for (const auto &entry: m)
+        for (auto &entry: m)
         {
             if (macs < entry.second)
             {
