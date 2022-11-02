@@ -16,12 +16,7 @@ public:
         
         int macs = 0;
         for (auto &entry: m)
-        {
-            if (macs < entry.second)
-            {
-                macs = entry.second;
-            }
-        }
+            macs = max(macs, entry.second);
         return wall.size() - macs;
     }
 };
