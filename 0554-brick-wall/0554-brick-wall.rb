@@ -16,4 +16,4 @@ def least_bricks(wall)
         return wall.length()
     end
     return wall.length() - stuff[stuff.max_by{|k, v| v}[0]]
-end 
+end
