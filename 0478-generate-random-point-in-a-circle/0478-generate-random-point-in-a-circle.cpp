@@ -22,9 +22,3 @@ public:
         return a;
     }
 };
-
-/**
- * Your Solution object will be instantiated and called as such:
- * Solution* obj = new Solution(radius, x_center, y_center);
- * vector<double> param_1 = obj->randPoint();
- */ 
