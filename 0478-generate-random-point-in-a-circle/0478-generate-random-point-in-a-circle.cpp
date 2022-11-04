@@ -21,4 +21,4 @@ public:
         a.push_back(y + rR * sin(tR));
         return a;
     }
-};
+}; 
