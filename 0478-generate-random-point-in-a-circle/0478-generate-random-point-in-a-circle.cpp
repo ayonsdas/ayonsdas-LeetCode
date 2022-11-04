@@ -18,4 +18,4 @@ public:
         double tR = ((double) rand() / (double) RAND_MAX) * 2 * M_PI;
         return vector<double>{x + rR * cos(tR), y + rR * sin(tR)};
     }
-};
+}; 
