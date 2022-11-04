@@ -12,6 +12,8 @@ public:
                 break;
             while(i < s.size() && !st.count(s[i]))
                 i++;
+            if(i >= j)
+                break;
             while(j >= 0 && !st.count(s[j]))
                 j--;
             if(i >= j)
