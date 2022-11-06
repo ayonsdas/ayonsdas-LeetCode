@@ -8,4 +8,4 @@ class Solution:
         for i in range(1, len(s)):
             st = min(st, s[i:] + s[0:i])
             
-        return st
+        return st 
