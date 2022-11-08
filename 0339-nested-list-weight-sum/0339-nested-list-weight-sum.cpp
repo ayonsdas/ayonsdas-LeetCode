@@ -30,27 +30,21 @@
 class Solution {
 public:
     int depthSum(vector<NestedInteger>& nestedList) {
-        queue<NestedInteger> q;
-        int s = 1;
+        int s = 0;
         for(NestedInteger n : nestedList)
-            q.push(n);
-        
-        int sum = 0;
-        while(!q.empty())
-        {
-            int sz = q.size();
-            for(int i = 0; i < sz; i++)
-            {
-                NestedInteger n = q.front();
-                q.pop();
-                if(n.isInteger())
-                    sum += s * n.getInteger();
-                else
-                    for(NestedInteger ni : n.getList())
-                        q.push(ni);
-            }
-            s++;
-        }
-        return sum;
+            s += depthHelper(n, 1);
+
+        return s;
     }
-}; 
+    
+    int depthHelper(NestedInteger ni, int depth)
+    {
+        if(ni.isInteger())
+            return ni.getInteger() * depth;
+        
+        int s = 0;
+        for(NestedInteger ni2 : ni.getList())
+            s += depthHelper(ni2, depth + 1);
+        return s;
+    }
+};
