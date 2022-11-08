@@ -47,4 +47,4 @@ public:
             s += depthHelper(ni2, depth + 1);
         return s;
     }
-};
+}; 
