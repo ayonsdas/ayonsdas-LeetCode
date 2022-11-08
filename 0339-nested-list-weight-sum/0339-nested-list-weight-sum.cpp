@@ -27,6 +27,7 @@
  *     const vector<NestedInteger> &getList() const;
  * };
  */
+
 class Solution {
 public:
     int depthSum(vector<NestedInteger>& nestedList) {
