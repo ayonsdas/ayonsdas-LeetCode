@@ -9,4 +9,4 @@ public:
                 r.push_back(a);
         return r;
     }
-}; 
+};
